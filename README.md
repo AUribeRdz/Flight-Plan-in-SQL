@@ -42,34 +42,47 @@ etc.
 
 -- Creating CTE
 
-WITH flight_route (Departure, Arrival, stops, totalCost, route) AS(
-	SELECT 
-	  	f.Departure, f.Arrival, 
-	  	0,
--- Defining the totalCost with the flight cost of the first flight
-	  	f.Cost,
-		-- Defining the route of a flight
-	  	CAST(Departure + ' -> ' + Arrival AS NVARCHAR(MAX))
-	FROM flightPlan f
-	WHERE Departure = 'Vienna'
-	UNION ALL
--- Recursive steps/variables
-	SELECT 
-	  	p.Departure, f.Arrival, 
-	  	p.stops + 1,
--- Adding the cost for each layover to the total costs
-	  	p.totalCost + f.cost,
-		-- Adding the layover airport to the route for each recursion step
-	  	p.route + ' -> ' + f.Arrival
-	FROM flightPlan f, flight_route p
-	WHERE p.Arrival = f.Departure AND 
-	      p.stops < 5)
+WITH flight_route (Departure, Arrival, stops, totalCost, route) AS
 
--- Final Table
+(SELECT f.Departure, f.Arrival, 0,
+
+-- Defining the totalCost with the flight cost of the first flight
+
+f.Cost,
+
+-- Defining the route of a flight
+
+CAST(Departure + ' -> ' + Arrival AS NVARCHAR(MAX))
+
+FROM flightPlan f
+
+WHERE Departure = 'Vienna'
+
+UNION ALL
+
+-- Recursive steps/variables
+
+SELECT p.Departure, f.Arrival, p.stops + 1,
+
+-- Adding the cost for each layover to the total costs
+
+p.totalCost + f.cost,
+
+-- Adding the layover airport to the route for each recursion step
+
+p.route + ' -> ' + f.Arrival
+
+FROM flightPlan f, flight_route p
+	
+ WHERE p.Arrival = f.Departure AND p.stops < 5)
+
+
+
+
+-- FINAL TABLE
+
 SELECT 
-    DISTINCT Arrival, 
-    Departure, 
-    route, 
-    stops,
-    totalCost
+
+    DISTINCT Arrival, Departure, route, stops, totalCost
+    
 FROM flight_route;
