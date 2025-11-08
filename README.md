@@ -28,4 +28,7 @@ Vienna	      	New York	AU84861	      	482.42	2.4
 Vienna	      	Paris	        EA37910	      	74.88	3
 Vienna	      	Chicago	      	EH55853	      	391.23	8
 
-"Flights" Table construction as part of Solution and Solution are in attached File.
+Build a SQL code to reflect a final table within all possible routes within no more than 5 stops departing from Vienna and arriving to all possible destination within stops and its cost.
+
+SOLUTION NOTE:
+"Flights" Table construction as part of Solution and Solution itself are in attached File.
