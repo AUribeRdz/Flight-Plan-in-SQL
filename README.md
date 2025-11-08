@@ -2,7 +2,7 @@
 # From direct flights table build a Table within stops and non-stops to same final destination & Cost in SQL
 
 
-Using an initial flights table as follow:
+Using an initial Flights table as follow:
 
 flightPlan table:
 
