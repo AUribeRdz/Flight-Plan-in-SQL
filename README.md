@@ -1,6 +1,14 @@
 # Flight-Plan-in-SQL
 # From direct flights table build a Table within stops and non-stops to same final destination & Cost in SQL
 
+# Flight plan in SQL — graph traversal and cost optimization Given a table of direct flights, this project builds a complete routing table that includes both non-stop and multi-stop options to the same destination, ranked by total cost. 
+
+## The problem Real-world routing is a graph traversal problem: find all valid paths between two nodes, expand the search space hop-by-hop, prune paths that exceed constraints, and rank by a cost function. This is the same logical structure as RAG pipeline retrieval — traverse a knowledge graph, rank candidate chunks by relevance score, return the optimal path to an answer. 
+
+## Implementation - Recursive CTE to generate multi-hop paths up to N stops - Cost aggregation across legs with null-safe handling for missing routes - Final output: unified table of direct + indirect routes with total cost 
+
+## Tech stack SQL (recursive CTEs) · Python · Jupyter Notebook · Pandas ## Skills demonstrated Data engineering · Recursive query design · Graph reasoning · Cost optimization · Analytical SQL
+
 
 Using an initial Flights table as follow:
 
